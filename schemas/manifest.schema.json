@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rapid-scaffold-sr/schemas/manifest.schema.json",
+  "title": "Provenance manifest",
+  "description": "Per-output-dir manifest.json. Validated by validate_artifacts.py (pre-commit).",
+  "type": "object",
+  "required": ["timestamp", "cmdline", "cwd", "host", "os", "python", "git", "versions", "params", "inputs"],
+  "additionalProperties": true,
+  "properties": {
+    "timestamp": {"type": "string", "format": "date-time"},
+    "cmdline": {"type": "string"},
+    "cwd": {"type": "string"},
+    "host": {"type": "string"},
+    "os": {"type": "string"},
+    "python": {"type": "string"},
+    "device": {"type": ["string", "null"]},
+    "git": {
+      "type": "object",
+      "required": ["commit", "branch", "dirty"],
+      "properties": {
+        "commit": {"type": ["string", "null"]},
+        "branch": {"type": ["string", "null"]},
+        "dirty": {"type": "boolean"}
+      }
+    },
+    "versions": {"type": "object", "additionalProperties": {"type": ["string", "null"]}},
+    "seeds": {"type": "object", "additionalProperties": {"type": ["integer", "null"]}},
+    "params": {"type": "object"},
+    "inputs": {
+      "type": "object",
+      "description": "path -> full SHA-256 (64 hex) or null",
+      "additionalProperties": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+    }
+  }
+}

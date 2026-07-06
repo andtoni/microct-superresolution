@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# rapid-scaffold-sr pre-commit size-gate.
+# Rejects staged blobs > 5 MB so derived data can never re-enter git history,
+# even via the auto-backup cron. Derived data belongs under codeoutput / C:\nnunet.
+# Installed to .git/hooks/pre-commit by tools/install-hooks.sh.
+set -u
+MAX=$((5 * 1024 * 1024))   # 5 MB
+fail=0
+while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    sz=$(git cat-file -s ":$f" 2>/dev/null || echo 0)
+    if [ "$sz" -gt "$MAX" ]; then
+        printf 'BLOCKED: %s is %d MB (>5 MB). Derived data belongs under codeoutput, not git.\n' \
+            "$f" "$((sz / 1024 / 1024))" >&2
+        fail=1
+    fi
+done < <(git diff --cached --name-only --diff-filter=AM)
+if [ "$fail" -ne 0 ]; then
+    printf 'Commit aborted by size-gate. Relocate the file(s) and add the pattern to .gitignore.\n' >&2
+    exit 1
+fi
+exit 0

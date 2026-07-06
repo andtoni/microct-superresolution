@@ -1,0 +1,21 @@
+{
+  "_note": "Publication style tokens (DATA_TAXONOMY SS7). Colours are colourblind-safe (Okabe-Ito), keyed to semantic tokens so a model/modality renames its colour follows. Used by figure_style.py.",
+  "dpi": 600,
+  "panel_width_mm": {"single": 89, "double": 183},
+  "font": {"family": "Arial", "size_pt": 7, "min_pt": 5},
+  "line_pt": 0.5,
+  "save": {"pdf_fonttype": 42, "svg_fonttype": "none"},
+  "palette": {
+    "HR":        "#000000",
+    "SR":        "#0072B2",
+    "interp":    "#E69F00",
+    "DeepScout": "#009E73",
+    "LR":        "#999999",
+    "ml":        "#0072B2",
+    "classical": "#E69F00",
+    "nnUNet":    "#CC79A7"
+  },
+  "okabe_ito": ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"],
+  "cmaps": {"sequential": "cividis", "error": "inferno", "diverging": "RdBu_r"},
+  "stars": {"0.0001": "****", "0.001": "***", "0.01": "**", "0.05": "*", "1.0": "ns"}
+}

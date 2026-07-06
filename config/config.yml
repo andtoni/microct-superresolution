@@ -1,0 +1,16 @@
+project:
+  slug: superresolution
+  title: "Rapid Scaffold Super-Resolution"
+  timezone: Africa/Johannesburg
+
+paths:
+  raw_data: data/raw
+  interim_data: data/interim
+  processed_data: data/processed
+  final_figures: figures/final
+  manuscript: manuscript/manuscript.qmd
+
+figure:
+  width_mm: 85
+  height_mm: 65
+  dpi: 600

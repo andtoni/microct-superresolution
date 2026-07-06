@@ -1,0 +1,46 @@
+[project]
+name = "superresolution"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.7",
+    "torchvision",
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "tifffile",
+    "imagecodecs",
+    "SimpleITK",
+    "matplotlib",
+    "tqdm",
+    "pingouin",
+    "txrm2tiff>=2.2.0",
+    "olefile>=0.47",
+    "pandas>=3.0.3",
+    "openpyxl>=3.1.5",
+    "pillow>=12.2.0",
+    "porespy>=3.0.4",
+    "openpnm>=3.6.3",
+    "taufactor>=1.2.1",
+    "pytrax>=0.1.2",
+    "skan>=0.13.1",
+    "gudhi>=3.12.0",
+    "quantimpy>=0.2.6",
+    "structure-tensor>=0.3.4",
+    "h5py>=3.16.0",
+    "monai>=1.5.2",
+    "nnunetv2>=2.8.0",
+    "jsonschema>=4.26.0",
+    "pyyaml>=6.0.3",
+    "pyarrow>=24.0.0",
+    "snakemake>=9.23.1",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu128", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]

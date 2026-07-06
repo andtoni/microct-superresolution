@@ -1,0 +1,10 @@
+* text=auto eol=lf
+*.docx -diff
+*.pdf -diff
+*.png -diff
+*.tif -diff
+*.tiff -diff
+*.czi -diff
+*.lif -diff
+*.ndpi -diff
+*.svs -diff

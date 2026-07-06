@@ -1,0 +1,51 @@
+# data_dictionary.yaml [AUTH] -- controlled vocabulary + schema for the tidy-long
+# ledger (DATA_TAXONOMY.md SS6). Metric names are a CLOSED set, never free text;
+# units are UCUM. emit.py validates against this; validate_artifacts.py enforces it.
+version: 1
+
+ledger_columns:
+  project:      {dtype: string, role: key}
+  experiment:   {dtype: string, role: key}
+  model:        {dtype: string, role: key}
+  case_id:      {dtype: string, role: key, fk: "case_registry.case_id"}
+  dataset:      {dtype: string, role: key}
+  modality:     {dtype: string, role: key, allowed: [HR, SR, interp, DeepScout, LR]}
+  factor:       {dtype: float,  role: key, unit: "1", note: "upscaling factor"}
+  metric:       {dtype: string, role: key, vocab: metrics}
+  value:        {dtype: float,  role: measure}
+  ci_lo:        {dtype: float,  role: measure, nullable: true}
+  ci_hi:        {dtype: float,  role: measure, nullable: true}
+  ci_method:    {dtype: string, nullable: true}
+  n:            {dtype: int,    nullable: true}
+  unit:         {dtype: string, note: "UCUM"}
+  seed:         {dtype: int,    nullable: true}
+  manifest_ref: {dtype: string, role: provenance}
+
+# name: {unit (UCUM; "1" = dimensionless), direction, [transform], [note]}
+metrics:
+  Dice:                {unit: "1",     direction: higher_better}
+  IoU:                 {unit: "1",     direction: higher_better}
+  clDice:              {unit: "1",     direction: higher_better}
+  ASSD:                {unit: "um",    direction: lower_better}
+  HD95:                {unit: "um",    direction: lower_better}
+  NSD:                 {unit: "1",     direction: higher_better}
+  betti0_error:        {unit: "1",     direction: lower_better}
+  betti1_error:        {unit: "1",     direction: lower_better}
+  porosity:            {unit: "1",     direction: neutral}
+  porosity_accessible: {unit: "1",     direction: neutral}
+  pore_diameter:       {unit: "um",    direction: neutral}
+  throat_diameter:     {unit: "um",    direction: neutral}
+  coordination:        {unit: "1",     direction: neutral}
+  permeability:        {unit: "m2",    direction: neutral, transform: log10}
+  tortuosity:          {unit: "1",     direction: neutral}
+  ssa:                 {unit: "1/um",  direction: neutral}
+  euler_density:       {unit: "1/mm3", direction: neutral}
+  anisotropy_fa:       {unit: "1",     direction: neutral}
+  branch_length:       {unit: "um",    direction: neutral}
+  PSNR:                {unit: "dB",    direction: higher_better}
+  SSIM:                {unit: "1",     direction: higher_better}
+  MS_SSIM:             {unit: "1",     direction: higher_better}
+  resolution:          {unit: "um",    direction: lower_better, note: "retrograde decorrelation/FSC"}
+  hallucination_index: {unit: "1",     direction: lower_better}
+
+modalities: [HR, SR, interp, DeepScout, LR]

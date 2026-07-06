@@ -1,0 +1,13 @@
+# Advisory linting for rapid-scaffold-sr. NOT enforced (no pre-commit hook) — run on demand:
+#   uv run ruff check .          # report issues
+#   uv run ruff check --fix .     # auto-fix safe ones
+# Conservative rules so it surfaces real problems without churning the existing 50-script tree.
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "W", "I", "UP", "B"]   # pyflakes, pycodestyle, isort, pyupgrade, bugbear
+ignore = ["E501"]                           # don't fight existing long lines
+
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
