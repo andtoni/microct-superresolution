@@ -33,3 +33,14 @@ manuscript/_freeze/
 .dvc/tmp/
 .dvc/cache/
 .dvc/config.local
+
+.env
+.env.*
+!.env.example
+*.sqlite-wal
+*.sqlite-shm
+research
+node_modules/
+coverage/
+tmp/
+.pi-subagents/
