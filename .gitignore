@@ -9,6 +9,7 @@ __pycache__/
 
 data/raw/**
 !data/raw/.gitkeep
+!data/raw/*.dvc
 data/external/**
 !data/external/.gitkeep
 data/interim/**
@@ -44,3 +45,7 @@ node_modules/
 coverage/
 tmp/
 .pi-subagents/
+# Canonical research material boundaries
+artifacts/*
+!artifacts/README.md
+.ipynb_checkpoints/
