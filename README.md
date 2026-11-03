@@ -4,9 +4,14 @@ Research code for a manuscript in preparation. It tests whether a fast, low-reso
 a porous biomaterial scaffold can be computationally restored to the quality of a slow, high-resolution
 scan, well enough that the transport-relevant measurements made on it still hold.
 
-Published from a private working repository. The manuscript, planning notes and data are not included,
-commit messages are reduced to their subject lines, and machine-specific paths have been replaced. The
-code has no automated test suite yet and has only been run on my own scans.
+> **Public mirror.** This is a sanitised copy of a private research repository. A scripted export
+> regenerates it from the private source and removes secrets, personal data and infrastructure details.
+> Every update must pass a leak check (a private-string denylist and gitleaks over the full history)
+> before it is published. Development happens in the private repository, so this copy takes no pull
+> requests. Last synced 3 November 2026.
+
+The manuscript, planning notes and data are not included, and commit messages are reduced to their
+subject lines. The code has no automated test suite yet and has only been run on my own scans.
 
 Built with AI coding agents (Claude Code, Codex and Pi) that I direct.
 
